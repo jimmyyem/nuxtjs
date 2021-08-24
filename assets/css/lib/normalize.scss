@@ -1,0 +1,89 @@
+// normalize
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+p,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dd,
+input,
+textarea,
+button {
+  margin: 0;
+  padding: 0;
+  word-break: normal;
+}
+
+body {
+  background: #f2f2f2;
+  font-size: 42px;
+  color: #222;
+  font-family: "Noto Sans CJK SC", "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑;
+  line-height: 1.5;
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+  height: initial !important;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+em,
+i {
+  font-weight: normal
+}
+
+ul {
+  list-style: none
+}
+
+em,
+i {
+  font-style: normal
+}
+
+img {
+  border: none;
+  vertical-align: middle
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+  outline: none
+}
+
+input,
+select,
+textarea {
+  font-size: 100%;
+  border: 0;
+  outline: none;
+  -webkit-appearance: none
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #999
+}
+
+img[src=''],
+img:not([src]) {
+  opacity: 0;
+}

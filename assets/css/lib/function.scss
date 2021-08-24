@@ -1,0 +1,17 @@
+// px转rem
+@function rem($px1, $px2:false, $px3:false, $px4:false) {
+  $fullpx: ($px1 / $rootSize) * 1rem;
+  $vars: $px2, $px3, $px4;
+  @each $var in $vars {
+    @if $var {
+      $curval: ($var / $rootSize)* 1rem;
+      $fullpx: $fullpx $curval
+    }
+  }
+  @return $fullpx
+}
+
+// 像素适配
+@function pixel($px) {
+  @return $px / 1.33333 * 1px
+}

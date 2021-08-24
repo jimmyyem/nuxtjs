@@ -1,5 +1,7 @@
 <template>
-  <Tutorial/>
+  <div>
+    this is strings page
+  </div>
 </template>
 
 <script>

@@ -1,0 +1,87 @@
+@import "../lib/mixins.scss";
+
+// 间距
+.z_blank {
+  height: rem(24);
+  overflow: hidden;
+  clear: both;
+  background: #F3F3F3;
+}
+
+// 单行打点
+.z_ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+// 2~4行打点
+.z_ellipsis2 {
+  @include lineClamp
+}
+
+.z_ellipsis3 {
+  @include lineClamp(3)
+}
+
+.z_ellipsis4 {
+  word-break: normal;
+  @include lineClamp(4)
+}
+
+/*
+ * 默认 flex_item 是均分父级宽，flex_item2 是均分剩余空间
+ * W3C: flex item 默认不会收缩到最小内容大小 (最长单词或固定宽元素)
+ */
+.z_flex {
+  @include boxSizing();
+  display: -webkit-box;
+  display: flex;
+  display: -webkit-flex;
+  display: flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify
+}
+
+.z_flex_item {
+  min-width: 0;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1
+}
+
+.z_flex_item2 {
+  min-width: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto
+}
+
+// 页面禁止滑动
+.z_no_scroll {
+  height: 100%;
+  overflow: hidden;
+
+  body {
+    height: 100% !important;
+    overflow: hidden;
+  }
+}
+
+.z_no_scroll2 {
+  overflow: hidden;
+
+  body {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+// 触发GPU硬件加速
+.z_gpu {
+  @include transform(translate3d(0, 0, 0))
+}

@@ -1,5 +1,7 @@
 <template>
-  <Tutorial/>
+  <div>
+    golang client in https://github.com
+  </div>
 </template>
 
 <script>

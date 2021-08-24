@@ -1,15 +1,7 @@
 <template>
-  <el-container>
-    <el-header>
-      <Menu/>
-    </el-header>
-    <el-main>
-      <div>
-        Redis UI is a very functional handy database GUI and works in your pocket on the responsive web or as a desktop
-        app v2021.10.106
-      </div>
-    </el-main>
-  </el-container>
+  <div>
+    This is a redis-ui project showing how to interact with redis server.
+  </div>
 </template>
 
 <script>
@@ -40,6 +32,10 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="css" scoped>
+.main {
+  overflow: hidden;
+  text-align: center;
 
+}
 </style>

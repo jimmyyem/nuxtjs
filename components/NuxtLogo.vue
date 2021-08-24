@@ -8,4 +8,4 @@
 .nuxt-logo {
   height: 180px;
 }
-</style>
+</style>gi

@@ -1,9 +1,7 @@
 <template>
-  <div>
+  <div >
     Redis UI is a project built in Nuxt.js where is a vue framework.
     {{ data.code }} {{ data.msg }}
-
-    <img src="~assets/i/banner.png"/>
 
   </div>
 </template>
@@ -11,11 +9,11 @@
 <script>
 
 export default {
-  name: 'Index',
-  components: {
-  },
+  name: 'NewsId',
+  components: {},
   data() {
     return {
+
       data: {
         code: 0,
         msg: ''
@@ -28,35 +26,36 @@ export default {
   beforeMount() {
   },
   mounted() {
-    this.init()
-
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
 
-      setTimeout(() => {
-        this.$nuxt.$loading.finish()
-      }, 500)
+      setTimeout(() => this.$nuxt.$loading.finish(), 4500)
+      // alert('users/index.vue')
     })
   },
   methods: {
-    async init() {
-      try {
-        const data = await this.$axios.$get('/db.json')
-        this.data = data
-        console.log(data)
-      } catch (e) {
-        console.log(e)
-      }
-    }
+
   },
   head() {
     return {
-      title: '首页'
+      title: 'single'
     }
   }
 }
 </script>
 
-<style lang="sass" scoped>
+<style scoped>
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding-top: 200px;
+  font-size: 30px;
+  font-family: sans-serif;
+}
 
 </style>

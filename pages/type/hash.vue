@@ -1,5 +1,7 @@
 <template>
-  <Tutorial/>
+  <div>
+    This is hash page
+  </div>
 </template>
 
 <script>

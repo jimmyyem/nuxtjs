@@ -1,0 +1,130 @@
+@import '../lib/mixins.scss';
+@import '../lib/variables.scss';
+
+.masked {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(34, 34, 34, 0.5);
+}
+
+.wrap-popu {
+  position: absolute;
+  top: 50%;
+  left: rem(75);
+  right: rem(75);
+  background: $white;
+  border-radius: rem(24);
+  -webkit-transform: translateY(-60%);
+  transform: translateY(-60%);
+  .tit {
+    padding: rem(72) 0 0;
+    text-align: center;
+    font-size: rem(48);
+    line-height: rem(48);
+  }
+
+  .con {
+    padding: rem(72) rem(72) rem(60);
+    text-align: center;
+    font-size: rem(39);
+    color: $crlightgray;
+  }
+}
+
+.tit + .con {
+  padding-top: rem(60);
+}
+
+.btn-wrap {
+  position: relative;
+  text-align: center;
+  font-size: rem(39);
+  color: $crgray;
+  height: rem(159);
+  line-height: rem(159);
+  background: $white;
+  border-radius: 0 0 rem(24) rem(24);
+  border-top: 3px solid $gray;
+  // &::before {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   content: '';
+  //   display: block;
+  //   border-top: 3px solid $gray;
+  // }
+  .btn {
+    position: relative;
+    border-right: 3px solid $gray;
+    &:last-child {
+      border: 0;
+    }
+    // &::after {
+    //   border-left: 1px solid $gray;
+    // }
+  }
+  .btn-color {
+    color: $green;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  width: rem(90);
+  height: rem(90);
+  background: url(~assets/i/popu-close.png) no-repeat center;
+  background-size: rem(30) rem(30);
+}
+
+/* alert */
+.alert {
+  max-width: 260px;
+  @include transform(translate(-50%, -50%));
+}
+
+.alert_compatible {
+  width: 220px;
+  margin-left: -130px;
+  @include transform(translateY(-50%));
+}
+
+.alert,
+.alert_compatible {
+  padding: 10px 20px;
+  line-height: 22px;
+  font-size: 14px;
+  color: #fff;
+  text-align: center;
+  word-break: break-all;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 99999;
+  @include transition(0.5s opacity);
+  pointer-events: none;
+}
+
+// 横屏适配
+@media screen and (min-width: 768px) {
+  .wrap-popu {
+    width: 16rem;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 780px) and (max-width: 1920px) {
+  .wrap-popu {
+    width: 15rem;
+    margin: 0 auto;
+  }
+}

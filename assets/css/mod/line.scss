@@ -1,0 +1,37 @@
+@import "../lib/mixins.scss";
+@import "../lib/variables.scss";
+
+// 细线
+.x-line {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    -webkit-transform: scale(1);
+    -webkit-transform-origin: 0 0;
+    pointer-events: none;
+    border-color: $gray;
+  }
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0) {
+  .x-line::after {
+    right: -100%;
+    bottom: -100%;
+    -webkit-transform: scale(0.5);
+  }
+}
+
+/* 3倍屏 */
+@media only screen and (-webkit-min-device-pixel-ratio: 3.0) {
+  .x-line::after {
+    right: -200%;
+    bottom: -200%;
+    -webkit-transform: scale(0.333333);
+  }
+}

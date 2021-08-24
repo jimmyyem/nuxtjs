@@ -1,0 +1,83 @@
+/**
+ *  flex弹性布局
+ */
+
+// flexible容器初始化
+@mixin flex() {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+// 内联flex容器
+@mixin inline-flex() {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+// 伸缩流垂直方向
+@mixin flex-direction-column() {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+// 主轴两端对齐
+@mixin flex-main-justify() {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+// 主轴元素均匀分布，两端保留子元素与子元素之间间距大小的一半
+@mixin flex-main-around() {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+// 主轴中间对齐
+@mixin flex-main-center() {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+// 主轴底部对齐
+@mixin flex-main-end() {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+// 侧轴居中对齐
+@mixin flex-cross-center() {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+// 侧轴顶边对齐
+@mixin flex-cross-start() {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+// 侧轴底部对齐
+@mixin flex-cross-end() {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+// 侧轴基线对齐
+@mixin flex-cross-baseline() {
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  align-items: baseline;
+}
+// 给伸缩项目赋予自由伸缩的能力
+@mixin flex-item() {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  width: 0%;
+}
+@mixin flex-auto() {
+  -webkit-box-flex:1;
+  -webkit-flex:auto;
+  flex:auto;
+}

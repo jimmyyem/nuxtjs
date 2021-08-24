@@ -1,0 +1,205 @@
+@import "./function.scss";
+@import "./flex.scss";
+
+// 限高打点(默认2行)
+@mixin lineClamp($lines:2) {
+  -webkit-line-clamp: $lines;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+// 边框阴影
+@mixin boxShadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+// css3动画
+@mixin transition($transition) {
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+@mixin perspective($perspective) {
+  -webkit-perspective: $perspective;
+  perspective: $perspective;
+}
+
+@mixin perspectiveOrigin($perspective) {
+  -webkit-perspective-origin: $perspective;
+  perspective-origin: $perspective;
+}
+
+@mixin transformOrigin($origin) {
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+// Box sizing
+@mixin boxSizing($boxmodel:border-box) {
+  -webkit-box-sizing: $boxmodel;
+  box-sizing: $boxmodel;
+}
+
+// Background size
+@mixin bgSize($size: cover) {
+  -webkit-background-size: $size;
+  background-size: $size;
+}
+
+// User select
+@mixin userSelect($select) {
+  -webkit-user-select: $select;
+  user-select: $select;
+}
+
+// CSS3 多栏布局
+@mixin contentColumns($column-count, $column-gap, $grid-gutter-width) {
+  -webkit-column-count: $column-count;
+  column-count: $column-count;
+  -webkit-column-gap: $column-gap;
+  column-gap: $column-gap;
+}
+
+/*
+ * 线性渐变
+ * $deg: 方向
+ * $cstop_1：起始色值
+ * $cstop_2：结束色值
+ */
+@mixin gradient($deg, $cstop_1, $cstop_2) {
+  background: $cstop_2;
+
+  @if $deg==v {
+    background: -webkit-gradient(linear, 0 0, 0 100%, from($cstop_1), to($cstop_2));
+    background: linear-gradient(to bottom, $cstop_1, $cstop_2);
+  }
+
+  @else if $deg==h {
+    background: -webkit-gradient(linear, 0 0, 100% 0, from($cstop_1), to($cstop_2));
+    background: linear-gradient($cstop_1, $cstop_2);
+  }
+
+  @else {
+    background: linear-gradient($deg, $cstop_1, $cstop_2);
+  }
+}
+
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+@mixin active($color: rgba(0, 0, 0, .5)) {
+  &:active {
+    // 这里不用.box-shadow(),是因为ios做了hack处理（额外的border-radius）
+    -webkit-box-shadow: inset 0 0 0 1000px $color;
+    box-shadow: inset 0 0 0 1000px $color;
+  }
+}
+
+/**
+ * 公共边框媒体查询适配样式
+ */
+@mixin border-1px-media() {
+  @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+    &:after {
+      right: 0;
+      bottom: 0;
+      -webkit-transform: scale(1);
+      transform: scale(1);
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:after {
+      right: -100%;
+      bottom: -100%;
+      -webkit-transform: scale(.5);
+      transform: scale(.5);
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:after {
+      right: -200%;
+      bottom: -200%;
+      -webkit-transform: scale(0.333333);
+      transform: scale(0.333333);
+    }
+  }
+}
+
+/**
+ * 边框弧度定制接口
+ * @param @r 边框弧度值
+ */
+@mixin border-1px-radius($r) {
+  border-radius: $r;
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+    &:after {
+      border-radius: 1*$r;
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    &:after {
+      border-radius: 2*$r;
+    }
+  }
+
+  @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    &:after {
+      border-radius: 3*$r;
+    }
+  }
+}
+
+/**
+ * 自定义边框样式
+ * @param  {[type]} @c        边框色
+ * @param  {[type]} @r        边框弧度
+ * @param  {[type]} @position 定位(fixed|relative)
+ */
+@mixin border-1px-custom($color:'#eee', $radius:'', $position: relative) {
+  position: $position;
+
+  &:after {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    pointer-events: none;
+    border: 1px solid $color;
+  }
+
+  @include border-1px-radius($radius);
+  @include border-1px-media;
+}
+
+// 清楚浮动
+.clearfix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+  }
+}

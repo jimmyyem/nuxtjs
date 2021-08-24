@@ -1,0 +1,18 @@
+@import "lib/flex.scss";
+@import "lib/function.scss";
+@import "lib/mixins.scss";
+@import "lib/normalize.scss";
+@import "lib/variables.scss";
+@import "mod/layout.scss";
+@import "mod/line.scss";
+@import "mod/prompt.scss";
+@import "mod/loading.scss";
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 1.5s;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+}

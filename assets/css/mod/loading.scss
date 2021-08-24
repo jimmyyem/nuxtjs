@@ -1,0 +1,139 @@
+@import "../lib/mixins.scss";
+
+// autoPage的loading
+.loading_c {
+  padding: 36px 0;
+  text-align: center;
+  color: $lightGray;
+  font-size: 36px;
+  clear: both;
+
+  &.hover {
+    background: #eee
+  }
+}
+
+.loading {
+  width: 90px;
+  height: 27px;
+  margin-right: 15px;
+  vertical-align: middle;
+  background: url(~assets/i/loading.gif) no-repeat;
+  background-size: 90px 27px;
+  display: inline-block
+}
+
+.loading_no {
+  font-size: rem(36);
+  text-align: center;
+  color: #aaa;
+  padding: rem(48) 0;
+
+  .line-left {
+    display: inline-block;
+    height: 2px;
+    width: 90px;
+    background: #aaa;
+    vertical-align: 12px;
+    margin-right: 12px;
+  }
+
+  .line-right {
+    display: inline-block;
+    height: 2px;
+    width: 90px;
+    background: #aaa;
+    vertical-align: 12px;
+    margin-right: 12px;
+  }
+
+  &::after {
+    border-top: 3px solid #eee;
+  }
+}
+
+@-webkit-keyframes skeleton-ani {
+  0% {
+    left: -100%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
+
+@keyframes skeleton-ani {
+  0% {
+    left: -100%;
+  }
+
+  to {
+    left: 150%;
+  }
+}
+
+// 骨架屏
+.skt-loading .skeleton {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0) !important;
+  background-image: none !important;
+  pointer-events: none;
+}
+
+.skt-loading .skeleton:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  width: 100%;
+  height: 100%;
+  background-color: #ebf1f8;
+  display: block;
+}
+
+.skt-loading .skeleton:not(.not-round):after {
+  border-radius: 4px;
+}
+
+.skt-loading .skeleton:not(.not-before):before {
+  position: absolute;
+  top: 0;
+  width: 30%;
+  height: 100%;
+  content: '';
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(0, hsla(0, 0%, 100%, 0)),
+      color-stop(50%, hsla(0, 0%, 100%, 0.3)),
+      to(hsla(0, 0%, 100%, 0))
+  );
+  background: -o-linear-gradient(
+      left,
+      hsla(0, 0%, 100%, 0) 0,
+      hsla(0, 0%, 100%, 0.3) 50%,
+      hsla(0, 0%, 100%, 0) 100%
+  );
+  background: linear-gradient(
+      90deg,
+      hsla(0, 0%, 100%, 0) 0,
+      hsla(0, 0%, 100%, 0.3) 50%,
+      hsla(0, 0%, 100%, 0)
+  );
+  -webkit-transform: skewX(-45deg);
+  -ms-transform: skewX(-45deg);
+  transform: skewX(-45deg);
+  z-index: 99;
+  -webkit-animation: skeleton-ani 1s ease infinite;
+  animation: skeleton-ani 1s ease infinite;
+  display: block;
+}
+
+.skt-loading .skeleton.badge:after {
+  background-color: #f8fafc;
+}
