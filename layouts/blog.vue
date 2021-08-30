@@ -16,6 +16,7 @@ export default {
     Menu,
     Footer
   },
+
 }
 </script>
 

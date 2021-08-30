@@ -1,7 +1,7 @@
 <template>
   <div>
     Redis UI is a project built in Nuxt.js where is a vue framework.
-    {{ data.code }} {{ data.msg }}
+    {{ $route.params.id }}
 
 
   </div>
