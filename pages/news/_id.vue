@@ -33,6 +33,10 @@ export default {
   },
   mounted() {
     console.log(this.$route.params.id)  // the news's id is this.$route.params.id
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
   },
   methods: {
 
