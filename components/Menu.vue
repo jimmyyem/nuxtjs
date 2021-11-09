@@ -1,5 +1,11 @@
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router="true">
+  <el-menu
+    :default-active="activeIndex"
+    class="el-menu-demo"
+    mode="horizontal"
+    @select="handleSelect"
+    :router="true"
+  >
     <el-menu-item index="/">首页</el-menu-item>
     <el-submenu index="/type">
       <template slot="title">类型支持</template>
@@ -18,6 +24,7 @@
       <el-menu-item index="/support/php">php</el-menu-item>
       <el-menu-item index="/support/golang">Golang</el-menu-item>
     </el-submenu>
+    <el-menu-item index="/product">商城</el-menu-item>
     <el-menu-item index="/about">关于</el-menu-item>
   </el-menu>
 </template>
